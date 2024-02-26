@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成本計算器</title>
+</head>
+<body>
+
+    <h1>成本計算器</h1>
+
+    <label for="originalCost">原始成本：</label>
+    <input type="number" id="originalCost" placeholder="輸入原始成本">
+    <br>
+
+    <label for="originalQuantity">張數：</label>
+    <input type="number" id="originalQuantity" placeholder="輸入張數">
+    <br>
+    <br>
+
+    <label for="additionalCost">追加成本：</label>
+    <input type="number" id="additionalCost" placeholder="輸入追加成本">
+    <br>
+
+    <label for="additionalQuantity">張數：</label>
+    <input type="number" id="additionalQuantity" placeholder="輸入張數">
+    <br>
+    <br>
+
+    <button onclick="calculateAverage()">計算平均成本與張數</button>
+
+    <h2>結果：</h2>
+    <p>平均成本: <span id="averageCost">0</span></p>
+    <p>總張數: <span id="totalQuantity">0</span></p>
+
+    <script>
+        function calculateAverage() {
+            // 獲取原始成本和張數
+            var originalCost = parseFloat(document.getElementById("originalCost").value) || 0;
+            var originalQuantity = parseInt(document.getElementById("originalQuantity").value) || 0;
+
+            // 獲取追加成本和張數
+            var additionalCost = parseFloat(document.getElementById("additionalCost").value) || 0;
+            var additionalQuantity = parseInt(document.getElementById("additionalQuantity").value) || 0;
+
+            // 計算平均成本和總張數
+            var totalCost = originalCost*originalQuantity + additionalCost*additionalQuantity;
+            var totalQuantity = originalQuantity + additionalQuantity;
+            var averageCost = totalCost / totalQuantity;
+
+            // 顯示結果
+            document.getElementById("averageCost").textContent = averageCost.toFixed(2);
+            document.getElementById("totalQuantity").textContent = totalQuantity;
+        }
+    </script>
+
+</body>
+</html>
